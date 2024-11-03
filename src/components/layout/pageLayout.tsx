@@ -9,7 +9,7 @@ import { Experience } from "@/components/sections/experience";
 import { Projects } from "@/components/sections/projects";
 import { Skills } from "@/components/sections/skills";
 import { Services } from "@/components/sections/services";
-import { Testimonials } from "@/components/sections/testimonials";
+// import { Testimonials } from "@/components/sections/testimonials";
 import { Contact } from "@/components/sections/contact";
 import { Footer } from "@/components/layout/footer";
 import { useState, useEffect } from "react";
