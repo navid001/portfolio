@@ -15,14 +15,15 @@ const projects: Project[] = [
         title: "Personal Portfolio",
         description:
             "Modern portfolio website built with Next.js, featuring smooth animations and a responsive design.",
-        image: "https://picsum.photos/seed/picsum/800",
+        image: "/projects/portfolio/hero.png",
         technologies: [
             "Next.js",
             "TypeScript",
             "Tailwind CSS",
             "Framer Motion",
+            "Shadcn UI",
         ],
-        liveUrl: "#",
+        liveUrl: "https://navid-alvi-ahsan.vercel.app",
         githubUrl: "https://github.com/navid001/portfolio",
         date: "10/2024",
         caseStudy: {
@@ -40,10 +41,10 @@ const projects: Project[] = [
                 "Responsive design for all devices",
             ],
             images: [
-                "", // Hero section screenshot
-                "", // Projects section screenshot
-                "", // Services section screenshot
-                "", // Contact form screenshot
+                "/projects/portfolio/hero.png", // Hero section screenshot
+                "/projects/portfolio/projects.png", // Projects section screenshot
+                "/projects/portfolio/services.png", // Services section screenshot
+                "/projects/portfolio/contact.png", // Contact form screenshot
             ],
             results:
                 "Created a professional portfolio that effectively showcases my skills and projects, resulting in improved client engagement and project inquiries.",
@@ -53,9 +54,9 @@ const projects: Project[] = [
         title: "Floortech Construction Landing Page",
         description:
             "Interactive landing page showcasing modern web development practices with responsive design and smooth animations.",
-        image: "https://picsum.photos/seed/picsum/800",
+        image: "/projects/floortech/hero.png",
         technologies: ["HTML", "CSS", "JavaScript"],
-        liveUrl: "#",
+        liveUrl: "",
         githubUrl: "https://github.com/navid001/FloorTech-Construction",
         date: "09/2024",
         caseStudy: {
@@ -72,10 +73,10 @@ const projects: Project[] = [
                 "Performance optimized images and animations",
             ],
             images: [
-                "", // Hero section screenshot
-                "", // Projects gallery screenshot
-                "", // Services section screenshot
-                "", // Contact form screenshot
+                "/projects/floortech/hero.png", // Hero section screenshot
+                "/projects/floortech/portfolio.png", // Projects gallery screenshot
+                "/projects/floortech/services.png", // Services section screenshot
+                "/projects/floortech/contact.png", // Contact page screenshot
             ],
             results:
                 "The website significantly improved Floortech Construction's online presence, resulting in increased client inquiries and improved user engagement metrics.",
@@ -85,9 +86,9 @@ const projects: Project[] = [
         title: "Craigslist Web Scraper",
         description:
             "Full-stack web scraping application built with Django and BeautifulSoup for automated data collection.",
-        image: "https://picsum.photos/seed/picsum/800",
+        image: "/projects/webscraper/hero.png",
         technologies: ["Python", "Django", "BeautifulSoup"],
-        liveUrl: "#",
+        liveUrl: "",
         githubUrl: "https://github.com/navid001/Craigslist-Web-Scraper",
         date: "03/2022",
         caseStudy: {
@@ -105,10 +106,10 @@ const projects: Project[] = [
                 "User-friendly dashboard",
             ],
             images: [
-                "", // Dashboard screenshot
-                "", // Search interface screenshot
-                "", // Results page screenshot
-                "", // Export functionality screenshot
+                "/projects/webscraper/hero.png", // Hero Section screenshot
+                "https://picsum.photos/seed/picsum/800", // Search interface screenshot
+                "https://picsum.photos/seed/picsum/800", // Results page screenshot
+                "https://picsum.photos/seed/picsum/800", // Export functionality screenshot
             ],
             results:
                 "Successfully implemented a robust scraping system that handles thousands of listings while maintaining excellent performance and user experience.",
@@ -169,7 +170,7 @@ export function Projects() {
                                         src={project.image}
                                         alt={project.title}
                                         fill
-                                        className="object-cover"
+                                        className="object-contain w-full h-full"
                                     />
                                 </div>
                                 <div className="p-6">
@@ -197,20 +198,22 @@ export function Projects() {
                                         )}
                                     </div>
                                     <div className="flex gap-4 justify-around">
-                                        <Button
-                                            variant="outline"
-                                            size="sm"
-                                            asChild
-                                        >
-                                            <a
-                                                href={project.liveUrl}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
+                                        {project.liveUrl && (
+                                            <Button
+                                                variant="outline"
+                                                size="sm"
+                                                asChild
                                             >
-                                                <ExternalLink className="h-4 w-4 mr-2" />
-                                                Live Demo
-                                            </a>
-                                        </Button>
+                                                <a
+                                                    href={project.liveUrl}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                >
+                                                    <ExternalLink className="h-4 w-4 mr-2" />
+                                                    Live Demo
+                                                </a>
+                                            </Button>
+                                        )}
                                         <Button
                                             variant="outline"
                                             size="sm"

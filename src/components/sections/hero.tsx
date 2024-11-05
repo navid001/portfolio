@@ -70,9 +70,9 @@ export function Hero() {
                           <span className="text-primary font-semibold">
                               Full-stack Developer{" "}
                           </span>
-                           based in{" "}
+                          based in{" "}
                           <span className="text-primary font-semibold">
-                            Bangladesh
+                              Bangladesh
                           </span>
                           , crafting exceptional digital experiences
                       </p>
@@ -85,7 +85,14 @@ export function Hero() {
                       className="flex flex-col sm:flex-row gap-4 justify-center"
                   >
                       <Button size="lg" asChild>
-                          <a href="#contact">Get in Touch</a>
+                          <ScrollLink
+                              to="contact"
+                              smooth={true}
+                              duration={500}
+                              className="cursor-pointer"
+                          >
+                              Get in Touch
+                          </ScrollLink>
                       </Button>
                       <Button size="lg" variant="outline" asChild>
                           <a href="/Navid Alvi Ahsan.pdf" download>

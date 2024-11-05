@@ -33,7 +33,7 @@ export function SelectedProjectDialog({
                             src={project.image}
                             alt={project.title}
                             fill
-                            className="object-cover"
+                            className="object-contain w-full h-full"
                         />
                     </div>
 
@@ -97,23 +97,25 @@ export function SelectedProjectDialog({
                                         src={image}
                                         alt="Project image"
                                         layout="fill"
-                                        className="object-cover"
+                                        className="object-contain w-full h-full"
                                     />
                                 </div>
                             ))}
                         </div>
 
                         <div className="flex gap-4 justify-around">
-                            <Button asChild>
-                                <a
-                                    href={project.liveUrl}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    <ExternalLink className="h-4 w-4 mr-2" />
-                                    View Live Site
-                                </a>
-                            </Button>
+                            {project.liveUrl && (
+                                <Button asChild>
+                                    <a
+                                        href={project.liveUrl}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
+                                        <ExternalLink className="h-4 w-4 mr-2" />
+                                        View Live Site
+                                    </a>
+                                </Button>
+                            )}
                             <Button variant="outline" asChild>
                                 <a
                                     href={project.githubUrl}
