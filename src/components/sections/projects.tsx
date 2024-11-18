@@ -41,10 +41,10 @@ const projects: Project[] = [
                 "Responsive design for all devices",
             ],
             images: [
-                "/projects/portfolio/hero.png", // Hero section screenshot
-                "/projects/portfolio/projects.png", // Projects section screenshot
-                "/projects/portfolio/services.png", // Services section screenshot
-                "/projects/portfolio/contact.png", // Contact form screenshot
+                "/projects/portfolio/hero.png",
+                "/projects/portfolio/projects.png",
+                "/projects/portfolio/services.png",
+                "/projects/portfolio/contact.png",
             ],
             results:
                 "Created a professional portfolio that effectively showcases my skills and projects, resulting in improved client engagement and project inquiries.",
@@ -73,10 +73,10 @@ const projects: Project[] = [
                 "Performance optimized images and animations",
             ],
             images: [
-                "/projects/floortech/hero.png", // Hero section screenshot
-                "/projects/floortech/portfolio.png", // Projects gallery screenshot
-                "/projects/floortech/services.png", // Services section screenshot
-                "/projects/floortech/contact.png", // Contact page screenshot
+                "/projects/floortech/hero.png",
+                "/projects/floortech/portfolio.png",
+                "/projects/floortech/services.png",
+                "/projects/floortech/contact.png",
             ],
             results:
                 "The website significantly improved Floortech Construction's online presence, resulting in increased client inquiries and improved user engagement metrics.",
@@ -106,10 +106,10 @@ const projects: Project[] = [
                 "User-friendly dashboard",
             ],
             images: [
-                "/projects/webscraper/hero.png", // Hero Section screenshot
-                "https://picsum.photos/seed/picsum/800", // Search interface screenshot
-                "https://picsum.photos/seed/picsum/800", // Results page screenshot
-                "https://picsum.photos/seed/picsum/800", // Export functionality screenshot
+                "/projects/webscraper/hero.png",
+                "https://picsum.photos/seed/picsum/800",
+                "https://picsum.photos/seed/picsum/800",
+                "https://picsum.photos/seed/picsum/800",
             ],
             results:
                 "Successfully implemented a robust scraping system that handles thousands of listings while maintaining excellent performance and user experience.",

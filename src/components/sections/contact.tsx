@@ -49,7 +49,7 @@ export function Contact() {
             isValid = false;
         }
         if (!formRef.current?.user_email.value.trim()) {
-            newErrors.user_email = "This is a required field.";
+            newErrors.user_email = "This is a required field and must be a valid email.";
             isValid = false;
         }
         if (!formRef.current?.subject.value.trim()) {
@@ -137,7 +137,6 @@ export function Contact() {
                                     type="text"
                                     name="user_name"
                                     placeholder="Your Name"
-                                    required
                                     className="w-full"
                                 />
                                 {errors.user_name && (
@@ -151,7 +150,6 @@ export function Contact() {
                                     type="email"
                                     name="user_email"
                                     placeholder="Your Email"
-                                    required
                                     className="w-full"
                                 />
                                 {errors.user_email && (
@@ -165,7 +163,6 @@ export function Contact() {
                                     type="text"
                                     name="subject"
                                     placeholder="Subject"
-                                    required
                                     className="w-full"
                                 />
                                 {errors.subject && (
@@ -178,8 +175,7 @@ export function Contact() {
                                 <Textarea
                                     name="message"
                                     placeholder="Your Message"
-                                    required
-                                    className="w-full min-h-[150px]"
+                                    className="w-full min-h-[150px] resize-none"
                                 />
                                 {errors.message && (
                                     <p className="text-red-500 text-xs mt-1">
