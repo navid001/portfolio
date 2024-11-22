@@ -12,6 +12,16 @@ interface Experience {
 }
 const experiences: Experience[] = [
     {
+        designation: "Freelance Developer",
+        duration: "06/2024 - Present",
+        company: "Self Employed",
+        duties: [
+            "Design, develop, and deploy dynamic full-stack web applications tailored to client needs, leveraging technologies such as React.js, Next.js, Node.js, and Typescript",
+            "Collaborate with clients to gather requirements, create prototypes, and deliver user- centric solutions focusing on scalability and performance",
+            "Deliver projects on time, meeting tight deadlines while maintaining code quality and adherence to best practices",
+        ],
+    },
+    {
         designation: "Technical Support Specialist Intern",
         duration: "01/2024 - 03/2024",
         company: "NSU Startups Next",
