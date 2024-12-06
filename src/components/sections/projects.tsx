@@ -23,7 +23,7 @@ const projects: Project[] = [
             "Framer Motion",
             "Shadcn UI",
         ],
-        liveUrl: "https://navid-alvi-ahsan.vercel.app",
+        liveUrl: "https://www.navidalviahsan.me",
         githubUrl: "https://github.com/navid001/portfolio",
         date: "10/2024",
         caseStudy: {
