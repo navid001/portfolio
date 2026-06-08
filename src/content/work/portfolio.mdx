@@ -1,0 +1,91 @@
+---
+slug: "portfolio"
+title: "How this portfolio is built, and what it's built to prove"
+client: "Personal"
+year: "2025"
+role: "Design, engineering, strategy"
+stack: ["Next.js 15", "TypeScript", "Tailwind CSS", "MDX", "Vercel"]
+duration: "3 weeks"
+status: "Shipped — you're looking at it"
+thumbnail: "/work/portfolio/thumb.jpg"
+cover: "/work/portfolio/cover.jpg"
+accent: "#E8975A"
+featured: true
+order: 2
+oneLineOutcome: "A portfolio engineered to demonstrate the exact craft it's trying to sell"
+---
+
+<CaseHero
+  title="How this portfolio is built, and what it's built to prove"
+  client="Personal"
+  year="2025"
+  role="Design, engineering, strategy"
+  outcome="A portfolio engineered to demonstrate the exact craft it's trying to sell"
+/>
+
+<Divider label="01 — the premise" />
+
+A portfolio is the one project where the audience is already inspecting the work while reading about it. Every other case study on this site asks you to take my word for a screenshot. This one doesn't get that luxury — you're standing inside the artifact as you judge it.
+
+That changes what the site has to do. It can't just *list* projects and credentials. It has to operate as proof of how I think, build, and make decisions — for two audiences reading it for different reasons, at the same time.
+
+<Pullquote>
+If the case studies are the evidence, the site holding them is the closing argument.
+</Pullquote>
+
+<Divider label="02 — who it has to convince" />
+
+Two readers land here with different questions. Engineers and hiring managers ask "can this person build something maintainable, fast, and considered?" — and they'll check by reading the code-quality signals: how the type system is used, how the build is structured, whether the animation is hand-rolled or bolted on. Clients evaluating a redesign or a new build ask "will working with this person produce something that looks and feels this good?" — and they'll answer that by *feeling* the site before reading a single word of copy.
+
+<Aside label="the constraint">
+I can't claim design taste in the copy — I'm an engineer by training and by title, and "I also do design" reads as overreach. The site has to demonstrate it silently and let the conclusion form on its own.
+</Aside>
+
+<Divider label="03 — what the design choices are doing" />
+
+Every visual decision here is load-bearing, not decorative:
+
+- **Deep warm navy (`#0F1419`) instead of pure black** — distinct from both the generic dark-developer aesthetic and the light-editorial one. It sets a mood without announcing itself.
+- **Playfair Display paired with DM Sans** — an editorial serif against a clean grotesque. The pairing argues for taste without a single decorative flourish.
+- **Left-anchored, asymmetric layout with hairline dividers, no cards or shadows** — the absence of the shadcn-card-and-gradient template is itself the signal. Restraint reads as confidence here.
+- **A single amber accent (`#E8975A`)** — used sparingly enough that it still means something each time it appears.
+
+<Divider label="04 — what the build is doing" />
+
+The technical choices map directly to the aesthetic ones — each is something a reader can go verify in the code:
+
+- MDX-based case studies (`next-mdx-remote/rsc` + `gray-matter`), so each project reads as a narrative with real structure rather than a bullet list in a dialog box.
+- Static generation at build time — no client-side content fetching, no layout shift.
+- Hand-rolled on-load animation variants in pure CSS and React state — no Framer Motion, no GSAP — each under 3KB and swappable through a single config flag (`LOADER_VARIANT`).
+- The View Transitions API for inter-page navigation, with a reduced-motion path that fast-dismisses rather than degrading into something worse.
+- `next/font/google` with proper fallback metrics, so custom type loads without a flash of system font or a layout shift.
+
+<Divider label="05 — what it's built to highlight" />
+
+A few things on this site exist specifically as details for an attentive reader to notice:
+
+- The boot-sequence loader on load is one of five interchangeable variants — evidence that the animation approach is a system, not a one-off effect.
+- The hero headline's font weight shifts as you scroll — a single quiet motion, the kind of detail that rewards noticing rather than demanding attention.
+- Every case study — including this one — follows the same numbered-block structure: a deliberate, repeatable format that turns "a list of work" into "the same argument, made seven times."
+
+<Aside label="why so few moments">
+DESIGN.md caps motion at two or three deliberate moments. Fade-in-on-scroll on every section is the default that makes most AI-templated portfolios feel identical — leaving it out is a decision, not an oversight.
+</Aside>
+
+<Divider label="06 — the recursive part" />
+
+<SingleImage
+  src="/work/portfolio/cover.jpg"
+  alt="This portfolio — homepage"
+  caption="Homepage — editorial list of selected work, left-anchored layout"
+/>
+
+This case study is, structurally, the same kind of artifact it describes: a narrative about a build, written in the format that build established, living on the site that build produced. If the structure, pacing, and restraint of *this* page hold up, that's a more honest signal than anything I could write about the site in the abstract.
+
+<Divider label="07 — what it's for" />
+
+The site is doing its job if an engineer can trace a design decision back to a technical one and trust both — and if a client can feel, before reading a single case study, that the thing they'd be hiring for is already on display in front of them.
+
+<Aside label="stack">
+Next.js 15 · TypeScript · Tailwind CSS · MDX via next-mdx-remote · Vercel · Playfair Display · DM Sans · JetBrains Mono
+</Aside>

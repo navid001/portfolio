@@ -1,0 +1,83 @@
+---
+slug: "shipfree"
+title: "ShipFree — shipping automation for grocery and e-commerce fulfillment"
+client: "ChefsRHere"
+year: "2026"
+role: "Product, design, full-stack engineering"
+stack: ["Next.js", "TypeScript", "Tailwind CSS", ".NET / C#", "Azure", "UPS API", "Shopify API"]
+duration: "~2 months to first production use"
+status: "Live in daily use — now being built into a standalone product"
+thumbnail: "/work/shipfree/thumb.jpg"
+cover: "/work/shipfree/cover.jpg"
+accent: "#E8975A"
+featured: true
+order: 1
+oneLineOutcome: "Built as one company's daily shipping tool first — now becoming a product of its own"
+---
+
+<CaseHero
+  title="ShipFree — shipping automation for grocery and e-commerce fulfillment"
+  client="ChefsRHere"
+  year="2026"
+  role="Product, design, full-stack engineering"
+  outcome="Built as one company's daily shipping tool first — now becoming a product of its own"
+/>
+
+<Divider label="01 — context" />
+
+ShipFree is a shipping and fulfillment tool I built to close a gap I kept seeing up close: fast-moving e-commerce and grocery delivery operations lose a surprising amount of every day to the unglamorous mechanics of getting an order out the door — checking what's in stock where, pulling a carrier rate, generating the right label, keeping the customer updated — stitched together by hand across tools that were never meant to talk to each other.
+
+I didn't build it as a commissioned deliverable. I built it as software I believed should exist, then proved it the only way that means anything: by putting it to work somewhere it had to perform every day. ChefsRHere, a US grocery delivery company, became its first real customer.
+
+<Pullquote>
+A demo has to look convincing for five minutes. A tool a warehouse depends on has to be right every single morning.
+</Pullquote>
+
+<Divider label="02 — the constraint" />
+
+Building something for one company's daily reality and building something as a product are two different briefs, and they pull in opposite directions. Tune a tool tightly to one team's workflow and it's easy to ship and easy to trust — but hard to generalize later. Design it to be generic from day one and it's easier to eventually sell — but it risks being useful to no one in the meantime, including the people testing it.
+
+I chose the harder order on purpose: build for a real operation first, let it earn daily trust there, and only then let the productized shape emerge from what actually held up — rather than guessing at "what a fulfillment team needs" in the abstract.
+
+<Divider label="03 — exploration" />
+
+The core question was how deep to integrate. I weighed two shapes: build on top of an existing shipping aggregator and inherit its fees, its rate quirks, and its ceiling — or connect directly to the carrier and the storefront platform and own the whole path from "order comes in" to "label prints, customer is notified."
+
+<Aside label="direction considered and rejected">
+The aggregator route would have reached a working demo faster. But it would have meant the tool's behavior — which rate shows up, how a label is formatted, what happens when an order ships from two places at once — was always someone else's decision to change. That's a fragile foundation for something meant to run unattended every morning, let alone something meant to become a product.
+</Aside>
+
+<Divider label="04 — decision" />
+
+I went direct — integrating with the carrier and the storefront platform myself rather than routing through a middle layer. It was more work up front, but it put the moments that actually matter to an operator — which rate to trust, how a label prints, what happens when an order can only ship in pieces — under my control rather than a vendor's. That single decision shaped almost everything that came after, and it's the reason this can plausibly grow into a product rather than stay a wrapper around someone else's API.
+
+<Divider label="05 — process" />
+
+What that decision turned into, day to day:
+
+- **One live workspace** where an operator sees open orders, picks the right shipping rate, and produces a label — without bouncing between the storefront admin, the carrier's site, and a spreadsheet.
+- **An address safety net** that catches the small, easy-to-miss mistakes — a dropped apartment number, an unrecognized unit — before they turn into a failed delivery three days later, instead of after.
+- **Handling for the edge cases real fulfillment throws at you** — an order that has to ship from two locations, an order that gets fulfilled in pieces and needs to be re-grouped correctly — the kind of detail that's invisible right up until it breaks something on a Tuesday morning.
+- **Label output that matches what the warehouse's printer expects**, in the size and format it expects, every time, with a preview before anything goes to paper.
+
+<Divider label="06 — shipped" />
+
+<SingleImage
+  src="/work/shipfree/cover.jpg"
+  alt="ShipFree — order workspace"
+  caption="The day-to-day workspace — orders, rates, and labels, in one screen"
+/>
+
+<Divider label="07 — outcome" />
+
+ShipFree has been running in daily production use at ChefsRHere since early 2026 — handling its shipping workload without anyone needing to open the carrier's website or a spreadsheet to get an order out the door. That's the validation that matters most at this stage: not a projected market, but one real operation choosing to depend on it, every morning, without me in the room.
+
+That's also exactly why I'm now building it into a standalone product. A version shaped by what actually held up under one company's daily reality is a far better starting point than the version I would have designed in the abstract for "anyone."
+
+<Aside label="what's next">
+ShipFree is moving from "the tool ChefsRHere uses" to "a tool any small fulfillment team can pick up" — the same thing it does for one operation, made available to many.
+</Aside>
+
+<Aside label="stack">
+Next.js · TypeScript · Tailwind CSS · .NET / C# · Azure · UPS API · Shopify API
+</Aside>

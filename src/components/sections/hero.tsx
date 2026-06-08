@@ -1,134 +1,180 @@
 "use client";
 
-import { motion } from 'framer-motion';
-import { Button } from '@/components/ui/button';
-import { ArrowDown, Download } from 'lucide-react';
-import { Link as ScrollLink } from 'react-scroll';
+import Link from "next/link";
+import { useEffect, useRef } from "react";
 
 export function Hero() {
+  const headlineRef = useRef<HTMLHeadingElement>(null);
+
+  // Subtle variable font weight modulation on scroll — skipped on slow connections
+  useEffect(() => {
+    const conn = (navigator as Navigator & { connection?: { effectiveType: string } }).connection;
+    if (conn && ["2g", "slow-2g"].includes(conn.effectiveType)) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const handleScroll = () => {
+      if (!headlineRef.current) return;
+      const scrolled = window.scrollY;
+      const maxScroll = window.innerHeight * 0.6;
+      const progress = Math.min(1, scrolled / maxScroll);
+      const weight = Math.round(400 + progress * 200);
+      headlineRef.current.style.fontWeight = String(weight);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-      <section
-          id="home"
-          className="min-h-screen flex items-center justify-center relative overflow-hidden"
+    <section
+      id="home"
+      style={{
+        minHeight: "100svh",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        paddingTop: "7rem",
+        paddingBottom: "6rem",
+        paddingLeft: "1.5rem",
+        paddingRight: "1.5rem",
+        position: "relative",
+      }}
+    >
+      <div style={{ maxWidth: 1200, margin: "0 auto", width: "100%" }}>
+        {/* Status indicator */}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "0.6rem",
+            marginBottom: "2.5rem",
+          }}
+        >
+          <span
+            id="status-dot"
+            style={{
+              width: 7,
+              height: 7,
+              borderRadius: "50%",
+              backgroundColor: "var(--accent)",
+              flexShrink: 0,
+              animation: "pulse-dot 2.5s ease-in-out infinite",
+            }}
+          />
+          <span
+            style={{
+              fontFamily: "var(--font-mono), monospace",
+              fontSize: 12,
+              color: "var(--quiet)",
+              letterSpacing: "0.06em",
+            }}
+          >
+            Open to interesting problems — 2026
+          </span>
+        </div>
+
+        {/* Main headline */}
+        <h1
+          ref={headlineRef}
+          style={{
+            fontFamily: "var(--font-display), Georgia, serif",
+            fontSize: "clamp(2.2rem, 6vw, 5rem)",
+            fontWeight: 400,
+            letterSpacing: "-0.025em",
+            lineHeight: 1.08,
+            color: "var(--ink)",
+            maxWidth: 800,
+            marginBottom: "1.5rem",
+          }}
+        >
+          Software engineer.
+          <br />
+          <span style={{ color: "var(--quiet)" }}>
+            I design and build
+            <br />
+            web products end-to-end.
+          </span>
+        </h1>
+
+        {/* Subhead */}
+        <p
+          style={{
+            fontFamily: "var(--font-body), sans-serif",
+            fontSize: "clamp(1rem, 2vw, 1.1rem)",
+            color: "var(--quiet)",
+            lineHeight: 1.6,
+            maxWidth: 500,
+            marginBottom: "3rem",
+          }}
+        >
+          Currently building SaaS products at ChefsRHere.
+        </p>
+
+        {/* CTA */}
+        <Link
+          href="/work"
+          style={{
+            fontFamily: "var(--font-body), sans-serif",
+            fontSize: 15,
+            color: "var(--ink)",
+            textDecoration: "none",
+            display: "inline-flex",
+            alignItems: "center",
+            gap: "0.4rem",
+            transition: "color 0.15s ease",
+          }}
+          onMouseEnter={(e) => (e.currentTarget.style.color = "var(--accent)")}
+          onMouseLeave={(e) => (e.currentTarget.style.color = "var(--ink)")}
+        >
+          See selected work →
+        </Link>
+      </div>
+
+      {/* Bottom metadata row */}
+      <div
+        style={{
+          position: "absolute",
+          bottom: "2rem",
+          left: "1.5rem",
+          right: "1.5rem",
+        }}
       >
-          {/* animated background */}
-          <div className="absolute inset-0">
-              {[...Array(15)].map((_, i) => (
-                  <motion.div
-                      key={i}
-                      className="absolute h-2 w-2 bg-primary rounded-full opacity-30"
-                      style={{
-                          left: `${Math.random() * 100}%`,
-                          top: `${Math.random() * 100}%`,
-                      }}
-                      animate={{
-                          x: [0, Math.random() * 50 - 25, 0],
-                          y: [0, Math.random() * 50 - 25, 0],
-                          scale: [1, 1.2, 1],
-                      }}
-                      transition={{
-                          duration: 8 + Math.random() * 5,
-                          repeat: Infinity,
-                          ease: "easeInOut",
-                      }}
-                  />
-              ))}
-          </div>
+        <div
+          style={{
+            maxWidth: 1200,
+            margin: "0 auto",
+            borderTop: "1px solid var(--hairline)",
+            paddingTop: "0.75rem",
+            display: "flex",
+            gap: "2rem",
+            flexWrap: "wrap",
+          }}
+        >
+          {[
+            "dhaka, bangladesh",
+            "chefsrhere — software engineer",
+          ].map((item) => (
+            <span
+              key={item}
+              style={{
+                fontFamily: "var(--font-mono), monospace",
+                fontSize: 10,
+                color: "var(--quiet)",
+                letterSpacing: "0.08em",
+              }}
+            >
+              {item}
+            </span>
+          ))}
+        </div>
+      </div>
 
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
-              <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5 }}
-                  className="space-y-8"
-              >
-                  <motion.div
-                      initial={{ scale: 0.5, opacity: 0 }}
-                      animate={{ scale: 1, opacity: 1 }}
-                      transition={{ delay: 0.2, duration: 0.5 }}
-                      className="w-32 h-32 rounded-full mx-auto flex items-center justify-center"
-                  >
-                      <img src="/LogoBg.png" alt="NA" />
-                  </motion.div>
-
-                  <div className="space-y-4">
-                      <motion.h1
-                          initial={{ opacity: 0, y: -10 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ duration: 0.7 }}
-                          className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-primary-gradient font-Montserrat"
-                          style={{
-                              background:
-                                  "linear-gradient(to right, #4b9eda, #0b3fb3)",
-                              WebkitBackgroundClip: "text",
-                              WebkitTextFillColor: "transparent",
-                          }}
-                      >
-                          Hi, I’m Navid Alvi Ahsan
-                      </motion.h1>
-                      <p className="text-xl sm:text-2xl text-muted-foreground leading-relaxed">
-                          <span className="text-primary font-semibold">
-                              Full-stack Developer{" "}
-                          </span>
-                          based in{" "}
-                          <span className="text-primary font-semibold">
-                              Bangladesh
-                          </span>
-                          , crafting exceptional digital experiences
-                      </p>
-                  </div>
-
-                  <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.4, duration: 0.5 }}
-                      className="flex flex-col sm:flex-row gap-4 justify-center"
-                  >
-                      <Button size="lg" asChild>
-                          <ScrollLink
-                              to="contact"
-                              smooth={true}
-                              duration={500}
-                              className="cursor-pointer"
-                          >
-                              Get in Touch
-                          </ScrollLink>
-                      </Button>
-                      <Button size="lg" variant="outline" asChild>
-                          <a href="/Navid Alvi Ahsan.pdf" download>
-                              Download Resume
-                              <Download className="ml-2 h-4 w-4" />
-                          </a>
-                      </Button>
-                  </motion.div>
-
-                  <motion.div
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: 0.6, duration: 0.5 }}
-                      className="mt-12"
-                  >
-                      <ScrollLink
-                          to="about"
-                          smooth={true}
-                          duration={500}
-                          className="cursor-pointer"
-                      >
-                          <motion.div
-                              animate={{ y: [0, 10, 0] }}
-                              transition={{
-                                  duration: 1.5,
-                                  repeat: Infinity,
-                                  ease: "easeInOut",
-                              }}
-                              className="text-muted-foreground hover:text-primary transition-colors"
-                          >
-                              <ArrowDown className="h-6 w-6 mx-auto" />
-                          </motion.div>
-                      </ScrollLink>
-                  </motion.div>
-              </motion.div>
-          </div>
-      </section>
+      <style>{`
+        @keyframes pulse-dot {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0.35; }
+        }
+      `}</style>
+    </section>
   );
 }

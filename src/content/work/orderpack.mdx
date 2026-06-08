@@ -1,0 +1,80 @@
+---
+slug: "orderpack"
+title: "OrderPack — turning Shopify order numbers into a warehouse pick list"
+client: "ChefsRHere"
+year: "2026"
+role: "Backend engineering, Shopify integration, deployment"
+stack: ["React", "Node.js / Express", "PostgreSQL", "Shopify Admin API", "Shopify Polaris", "JWT auth"]
+duration: "~1 month, first commit to live use"
+status: "Shipped — running in daily use; productization planned"
+thumbnail: "/work/orderpack/thumb.jpg"
+cover: "/work/orderpack/cover.jpg"
+accent: "#E8975A"
+featured: true
+order: 4
+oneLineOutcome: "Replaced an order-by-order manual lookup process with a single paste, search, and print flow for warehouse staff"
+---
+
+<CaseHero
+  title="OrderPack — turning Shopify order numbers into a warehouse pick list"
+  client="ChefsRHere"
+  year="2026"
+  role="Backend engineering, Shopify integration, deployment"
+  outcome="Replaced an order-by-order manual lookup process with a single paste, search, and print flow for warehouse staff"
+/>
+
+<Divider label="01 — context" />
+
+OrderPack is a small internal tool I built for the warehouse side of ChefsRHere's operation — for the people who physically pick and pack each Shopify order before it ships. Before it existed, getting from "here are today's orders" to "here's what to grab off the shelf" meant opening orders one at a time and writing down what each one needed.
+
+OrderPack collapses that into a single step: paste in a batch of order numbers — or pull a whole batch at once by a shared tag — and get back one consolidated list. Every product and variant involved, how many of each across the whole batch, and which orders need them. Print that, and the picking run starts from one sheet instead of a stack of individual order pages.
+
+It was also a different kind of project for me — my first engagement with a paying client rather than a personal or employer-internal build, working alongside one collaborator.
+
+<Divider label="02 — the constraint" />
+
+The brief was short and the runway shorter — about a month from first commit to something staff could actually rely on, built to slot into a live store and an existing warehouse routine rather than a blank slate. Nobody could be asked to change how they already worked; the tool had to meet the process where it was.
+
+It also had to handle a real client's order and customer data from day one, which meant the access model couldn't be an afterthought bolted on at the end — and Shopify's own order API has real ceilings on how much you can pull and how fast, so the tool had to absorb that gracefully rather than pass the complexity on to the person using it.
+
+<Divider label="03 — exploration" />
+
+The first version of the PDF export took the obvious shortcut: render the results on screen and capture that as an image. It looked fine in five minutes of testing, and fell apart the moment a real list got long enough to need more than one page, or wider than a single screenshot could hold.
+
+<Aside label="a small lesson, learned the hard way">
+Screenshotting a UI and calling it a document works right up until the document needs to behave like a document — paginated, formatted, readable as data rather than as a picture of data. That gap is invisible until someone tries to print page three.
+</Aside>
+
+<Divider label="04 — decision" />
+
+I rebuilt the export to generate the PDF directly from the underlying data rather than from whatever happened to be on screen — a real multi-page document with its own layout, independent of how a browser happened to be rendering the page that day. Slower to build, but it's the only version trustworthy enough to hand someone who's going to print it and walk to a shelf with it in hand.
+
+<Divider label="05 — process" />
+
+A few of the decisions that mattered most, day to day:
+
+- **One input, many shapes** — staff can paste order numbers separated by commas, spaces, line breaks, with or without a "#", in any combination, and the tool quietly cleans and dedupes all of it before doing anything else.
+- **A tag-based mode for batch runs** — instead of copying numbers at all, staff can pull every order carrying a given tag and get the same consolidated list for the whole batch in one pass.
+- **Flags that save a second look** — orders with a payment issue, or carrying a note from the customer, are surfaced directly in the results table instead of waiting to be discovered mid-pick.
+- **A filtering pass that learned from real orders** — once it was running against live data, it became clear that not every line item on an order is something to physically pick. The tool had to learn to recognize and quietly set aside the ones that aren't, so the counts shown to staff match what they'll actually find on the shelf.
+- **Output that reads correctly** — including product names written in scripts beyond English, since that's the real catalog it had to work against.
+
+<Divider label="06 — shipped" />
+
+<SingleImage
+  src="/work/orderpack/cover.jpg"
+  alt="OrderPack — consolidated pick list"
+  caption="Paste order numbers, or search by tag — get one consolidated pick list back"
+/>
+
+<Divider label="07 — outcome" />
+
+OrderPack replaced an order-by-order manual lookup process with a single paste-search-print flow, and has been running in daily use against a live store without disrupting the systems already built up around it.
+
+<Aside label="what's next">
+The plan is to take what makes this work for one warehouse and shape it into something any small Shopify operation could pick up and run on its own.
+</Aside>
+
+<Aside label="stack">
+React · Node.js / Express · PostgreSQL · Shopify Admin API · Shopify Polaris
+</Aside>

@@ -1,12 +1,18 @@
-"use client";
-
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
+import { PageLoader } from "@/components/loaders/PageLoader";
 
-export default function NotFound() {
+export const metadata: Metadata = {
+  title: "Notes",
+  description: "Thoughts, experiments, and writing by Navid Alvi Ahsan.",
+};
+
+export default function NotesPage() {
   return (
     <>
+      <PageLoader />
       <Navbar />
       <main style={{ paddingTop: "6rem", paddingBottom: "6rem" }}>
         <div
@@ -14,7 +20,7 @@ export default function NotFound() {
             maxWidth: 1200,
             margin: "0 auto",
             padding: "0 1.5rem",
-            minHeight: "70vh",
+            minHeight: "60vh",
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
@@ -31,7 +37,7 @@ export default function NotFound() {
               display: "block",
             }}
           >
-            404
+            notes
           </span>
           <h1
             style={{
@@ -40,11 +46,11 @@ export default function NotFound() {
               fontWeight: 400,
               letterSpacing: "-0.025em",
               color: "var(--ink)",
-              marginBottom: "1rem",
+              marginBottom: "1.5rem",
               lineHeight: 1.1,
             }}
           >
-            Page not found.
+            Nothing here yet.
           </h1>
           <p
             style={{
@@ -52,36 +58,23 @@ export default function NotFound() {
               fontSize: "1.05rem",
               color: "var(--quiet)",
               lineHeight: 1.6,
-              maxWidth: 420,
-              marginBottom: "2rem",
+              maxWidth: 440,
             }}
           >
-            This page doesn&apos;t exist or was moved. Try the links below.
+            Thoughts, experiments, and writing will appear here when they&apos;re
+            ready. In the meantime, the work is in the{" "}
+            <Link
+              href="/work"
+              style={{
+                color: "var(--accent)",
+                textDecoration: "underline",
+                textUnderlineOffset: 3,
+              }}
+            >
+              case studies
+            </Link>
+            .
           </p>
-          <div style={{ display: "flex", gap: "1.5rem", flexWrap: "wrap" }}>
-            {[
-              { href: "/", label: "Home" },
-              { href: "/work", label: "Work" },
-              { href: "/about", label: "About" },
-            ].map(({ href, label }) => (
-              <Link
-                key={href}
-                href={href}
-                style={{
-                  fontFamily: "var(--font-mono), monospace",
-                  fontSize: 13,
-                  color: "var(--quiet)",
-                  textDecoration: "none",
-                  letterSpacing: "0.04em",
-                  transition: "color 0.15s ease",
-                }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = "var(--accent)")}
-                onMouseLeave={(e) => (e.currentTarget.style.color = "var(--quiet)")}
-              >
-                {label} →
-              </Link>
-            ))}
-          </div>
         </div>
       </main>
       <Footer />

@@ -1,48 +1,64 @@
 "use client";
 
-import { Github, Linkedin, Mail } from "lucide-react";
-import { motion } from "framer-motion";
-
-const socialLinks = [
-    { href: "https://github.com/navid001", icon: Github, label: "GitHub" },
-    {
-        href: "https://www.linkedin.com/in/navid-alvi-ahsan",
-        icon: Linkedin,
-        label: "LinkedIn",
-    },
-    { href: "mailto:navidalvi.001@gmail.com", icon: Mail, label: "Email" },
+const SOCIAL_LINKS = [
+  { href: "https://github.com/navid001", label: "github" },
+  { href: "https://www.linkedin.com/in/navid-alvi-ahsan", label: "linkedin" },
+  { href: "mailto:navidalvi.001@gmail.com", label: "email" },
 ];
 
 export function Footer() {
-    return (
-        <footer className="py-8 border-t">
-            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex flex-col items-center justify-between space-y-4 md:flex-row md:space-y-0">
-                    <p className="text-muted-foreground">
-                        © {new Date().getFullYear()} Navid Ahsan. All rights
-                        reserved.
-                    </p>
+  return (
+    <footer
+      style={{
+        borderTop: "1px solid var(--hairline)",
+        padding: "2rem 1.5rem",
+      }}
+    >
+      <div
+        style={{
+          maxWidth: 1200,
+          margin: "0 auto",
+          display: "flex",
+          flexWrap: "wrap",
+          alignItems: "center",
+          justifyContent: "space-between",
+          gap: "1rem",
+        }}
+      >
+        <span
+          style={{
+            fontFamily: "var(--font-mono), monospace",
+            fontSize: 11,
+            color: "var(--quiet)",
+            letterSpacing: "0.06em",
+          }}
+        >
+          © {new Date().getFullYear()} navid alvi ahsan
+        </span>
 
-                    <div className="flex items-center space-x-6">
-                        {socialLinks.map((link) => {
-                            const Icon = link.icon;
-                            return (
-                                <motion.a
-                                    key={link.label}
-                                    href={link.href}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="text-muted-foreground hover:text-primary transition-colors"
-                                    whileHover={{ scale: 1.1 }}
-                                    whileTap={{ scale: 0.95 }}
-                                >
-                                    <Icon className="h-5 w-5" />
-                                </motion.a>
-                            );
-                        })}
-                    </div>
-                </div>
-            </div>
-        </footer>
-    );
+        <nav style={{ display: "flex", gap: "1.5rem" }}>
+          {SOCIAL_LINKS.map(({ href, label }) => (
+            <a
+              key={label}
+              href={href}
+              target={href.startsWith("mailto:") ? undefined : "_blank"}
+              rel={href.startsWith("mailto:") ? undefined : "noopener noreferrer"}
+              style={{
+                fontFamily: "var(--font-mono), monospace",
+                fontSize: 11,
+                color: "var(--quiet)",
+                textDecoration: "none",
+                letterSpacing: "0.06em",
+                transition: "color 0.15s ease",
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = "var(--ink)")}
+              onMouseLeave={(e) => (e.currentTarget.style.color = "var(--quiet)")}
+            >
+              {label}
+            </a>
+          ))}
+        </nav>
+      </div>
+    </footer>
+  );
 }

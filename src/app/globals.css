@@ -1,72 +1,274 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 217.2 91.2% 59.8%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 224.3 76.3% 48%;
-    --radius: 0.75rem;
+    /* Dark theme — primary, default */
+    --bg: #13110F;
+    --ink: #F5F2EB;
+    --quiet: #8B8680;
+    --accent: #E8975A;
+    --surface: #1A1F26;
+    --hairline: #2A2F36;
+
+    /* Semantic aliases for Tailwind */
+    --background: #0F1419;
+    --foreground: #F5F2EB;
+    --muted-foreground: #8B8680;
+    --border: #2A2F36;
+    --input: #1A1F26;
+    --ring: #E8975A;
+    --radius: 4px;
+
+    /* shadcn compatibility (HSL not used but kept for any remaining shadcn internals) */
+    --primary: 30 75% 63%;
+    --primary-foreground: 25 10% 10%;
+    --secondary: 210 15% 15%;
+    --secondary-foreground: 40 30% 92%;
+    --muted: 210 15% 15%;
+    --accent-hsl: 30 75% 63%;
+    --accent-foreground: 25 10% 10%;
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 40 30% 92%;
+    --card: #1A1F26;
+    --card-foreground: #F5F2EB;
+    --popover: #1A1F26;
+    --popover-foreground: #F5F2EB;
+  }
+
+  .light {
+    --bg: #F5F2EB;
+    --ink: #1A1A1A;
+    --quiet: #6B6B6B;
+    --accent: #8B2C1F;
+    --surface: #EAE6DD;
+    --hairline: #D8D2C4;
+
+    --background: #F5F2EB;
+    --foreground: #1A1A1A;
+    --muted-foreground: #6B6B6B;
+    --border: #D8D2C4;
+    --input: #EAE6DD;
+    --ring: #8B2C1F;
   }
 }
 
 @layer base {
   * {
-    @apply border-border;
+    border-color: var(--hairline);
+    box-sizing: border-box;
   }
+
+  html {
+    scroll-behavior: smooth;
+    background-color: var(--bg);
+    color: var(--ink);
+  }
+
   body {
-    @apply bg-background text-foreground;
+    background-color: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body), system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  /* Typography */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display), Georgia, serif;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+
+  code, kbd, samp, pre {
+    font-family: var(--font-mono), 'Courier New', monospace;
+  }
+
+  /* Focus states — accent underline, never default blue */
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* Selection */
+  ::selection {
+    background-color: var(--accent);
+    color: var(--bg);
+  }
+
+  /* Smooth scroll with proper offset */
+  html {
+    scroll-padding-top: 80px;
   }
 }
 
-.gradient-text {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-600;
-}
+@layer utilities {
+  /* Text color utilities using CSS vars */
+  .text-ink { color: var(--ink); }
+  .text-quiet { color: var(--quiet); }
+  .text-accent { color: var(--accent); }
 
-html {
-  scroll-behavior: smooth;
-}
+  /* Background utilities */
+  .bg-base { background-color: var(--bg); }
+  .bg-surface { background-color: var(--surface); }
 
-@keyframes gradient {
-  0% {
-    background-position: 0% 50%;
+  /* Hairline dividers */
+  .hairline-top { border-top: 1px solid var(--hairline); }
+  .hairline-bottom { border-bottom: 1px solid var(--hairline); }
+  .hairline-left { border-left: 1px solid var(--hairline); }
+  .hairline-right { border-right: 1px solid var(--hairline); }
+
+  /* Font family utilities */
+  .font-display { font-family: var(--font-display), Georgia, serif; }
+  .font-body { font-family: var(--font-body), system-ui, sans-serif; }
+  .font-mono { font-family: var(--font-mono), 'Courier New', monospace; }
+
+  /* Mono metadata style */
+  .mono-meta {
+    font-family: var(--font-mono), 'Courier New', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--quiet);
+    text-transform: lowercase;
   }
-  50% {
-    background-position: 100% 50%;
+
+  /* Accent hover transition */
+  .hover-accent {
+    transition: color 0.15s ease;
   }
-  100% {
-    background-position: 0% 50%;
+  .hover-accent:hover {
+    color: var(--accent);
   }
 }
 
-.animate-gradient {
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-  background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
+/* View Transitions API */
+@view-transition {
+  navigation: auto;
 }
 
-/* Add this in your global CSS file or Tailwind configuration */
-.text-primary-gradient {
-    background: linear-gradient(to right, #4b9eda, #1a2f5b);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+::view-transition-old(root) {
+  animation: fade-out 0.15s ease-out;
+}
+
+::view-transition-new(root) {
+  animation: fade-in 0.15s ease-in;
+}
+
+@keyframes fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Code blocks from rehype-pretty-code */
+[data-rehype-pretty-code-figure] {
+  margin: 1.5rem 0;
+}
+
+[data-rehype-pretty-code-figure] pre {
+  background-color: var(--surface) !important;
+  border: 1px solid var(--hairline);
+  border-radius: 4px;
+  padding: 1.25rem 1.5rem;
+  overflow-x: auto;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+[data-rehype-pretty-code-figure] code {
+  font-family: var(--font-mono), 'Courier New', monospace;
+  font-size: inherit;
+  background: transparent !important;
+}
+
+[data-rehype-pretty-code-title] {
+  font-family: var(--font-mono), monospace;
+  font-size: 11px;
+  color: var(--quiet);
+  letter-spacing: 0.06em;
+  padding: 0.5rem 1.5rem;
+  border: 1px solid var(--hairline);
+  border-bottom: none;
+  border-radius: 4px 4px 0 0;
+  background-color: var(--surface);
+}
+
+/* Prose content in case studies */
+.prose-case {
+  max-width: 720px;
+}
+
+.prose-case p {
+  margin-bottom: 1.25rem;
+  color: var(--ink);
+}
+
+.prose-case a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.prose-case a:hover {
+  color: var(--ink);
+}
+
+.prose-case h2 {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 1.75rem;
+  font-weight: 400;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.prose-case h3 {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 1.25rem;
+  font-weight: 400;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.prose-case ul, .prose-case ol {
+  padding-left: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.prose-case li {
+  margin-bottom: 0.35rem;
+}
+
+.prose-case hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 3rem 0;
+}
+
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  @view-transition {
+    navigation: none;
+  }
 }

@@ -1,7 +1,14 @@
 "use client"
 
 import * as React from "react"
-import { Cross2Icon } from "@radix-ui/react-icons"
+// ✕ close icon — inline SVG to avoid @radix-ui/react-icons dep
+function Cross2Icon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M11.78 4.22a.75.75 0 0 0-1.06-1.06L7.5 6.44 4.28 3.16a.75.75 0 0 0-1.06 1.06L6.44 7.5l-3.22 3.22a.75.75 0 1 0 1.06 1.06L7.5 8.56l3.22 3.22a.75.75 0 1 0 1.06-1.06L8.56 7.5l3.22-3.28Z" fill="currentColor" />
+    </svg>
+  )
+}
 import * as ToastPrimitives from "@radix-ui/react-toast"
 import { cva, type VariantProps } from "class-variance-authority"
 

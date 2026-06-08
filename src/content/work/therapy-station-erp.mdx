@@ -1,0 +1,91 @@
+---
+slug: "therapy-station-erp"
+title: "Therapy Station — a clinical ERP for a physiotherapy clinic"
+client: "Therapy Station"
+year: "2026"
+role: "Freelance full-stack engineering — solo, design to deploy"
+stack: ["Next.js 13", "TypeScript", "Supabase (Postgres, Auth, RLS)", "Tailwind CSS", "shadcn/ui", "FullCalendar", "Recharts"]
+duration: "~6 weeks of active build"
+status: "Live"
+thumbnail: "/work/therapy-station-erp/thumbnail.png"
+cover: "/work/therapy-station-erp/cover.png"
+ogImage: "/work/therapy-station-erp/og.png"
+accent: "#1A7A4A"
+featured: true
+order: 1
+oneLineOutcome: "Replaced a fully paper-based clinic operation with one auditable system covering scheduling, billing, inventory, and compliance"
+---
+
+<CaseHero
+  title="Therapy Station — a clinical ERP for a physiotherapy clinic"
+  client="Therapy Station"
+  year="2026"
+  role="Freelance full-stack engineering — solo, design to deploy"
+  outcome="Replaced a fully paper-based clinic operation with one auditable system covering scheduling, billing, inventory, and compliance"
+/>
+
+<Divider label="01 — context" />
+
+Therapy Station is a physiotherapy clinic in Banani, Dhaka. Before this project, it ran entirely on paper — no digital patient records, no centralized billing, no stock tracking, and no real way to answer "what actually happened at this visit" beyond whichever notebook was closest at the time.
+
+I built a clinical-management system to cover the clinic's full daily loop in one place: patient intake, slot-based scheduling, session logs, prescriptions and therapy plans, point-of-sale billing with split payments, inventory, staff and roles, analytics, and an audit trail that can't quietly be edited after the fact. It had to work for four genuinely different roles — owner, doctor, receptionist, therapist — each with a different job and a different slice of the system, rather than one generic screen stretched to fit everyone.
+
+This is Phase 1 of a longer roadmap that includes a public site and a mobile app later. What's covered here is the internal staff system — and it's live.
+
+<Divider label="02 — the constraint" />
+
+This was a solo freelance build for a business that would start running on it from day one — no in-house QA, design, or product function to lean on, and no room for "we'll fix that later" on anything touching live billing or patient records.
+
+There was also nothing to migrate from or model against. Every workflow — how intake actually happens, how a session gets logged, how a bill splits across cash and mobile payment, how stock gets used and replenished — had to be reverse-engineered from how the clinic actually ran on paper, not adapted from an existing digital process. And because the system would hold patient health data, Bangladesh's 2025 Personal Data Protection Ordinance set a hard floor under the security and audit design before a single real record existed in it.
+
+<Aside label="a budget constraint that shaped the architecture">
+The whole system had to run on Supabase's free tier — which quietly pauses a database after a week of no traffic. That's not a hypothetical edge case; left alone, it's exactly the kind of thing that turns into a confusing "why is the system down" call to the front desk on a slow morning.
+</Aside>
+
+<Divider label="03 — exploration" />
+
+The first version of the scheduling model did what most clinic software does by default: treat physical beds as the bookable resource, wired directly into the schema and the calendar's columns. It looked right in a demo and didn't survive contact with how Therapy Station actually operates — the clinic doesn't have fixed beds, it has flexible treatment spaces that get renamed, recategorized, reordered, and switched on or off as the week's needs shift. A model built around "beds" couldn't represent that without fighting the clinic at every turn.
+
+Separately, the "standard" way to evolve the database schema — Supabase's own CLI and dashboard tooling — turned out to be unreliable in practice, failing in ways its documentation didn't explain.
+
+<Divider label="04 — decision" />
+
+I rebuilt the core scheduling primitive around "slots" instead of "beds" — touching the schema, the access rules, and the calendar configuration — so the system would mirror how the clinic actually thinks about its own space, rather than how generic clinic software assumes one works.
+
+For the schema-migration problem, instead of continuing to fight an unreliable tool, I wrote a small custom migration tool that rewrites raw SQL into statements safe to run more than once, with a fallback that produces a single paste-ready file for the moments a direct database connection simply won't cooperate.
+
+And for the handful of rules a clinic genuinely cannot afford to get wrong — a finalized bill can never be edited by anyone, including the owner; the audit log can never be altered, even by an admin — I decided those guarantees belong in the database itself, not in application code that some future change could quietly weaken.
+
+<Pullquote>
+The rules that matter most shouldn't depend on every future version of the code remembering to enforce them.
+</Pullquote>
+
+<Divider label="05 — process" />
+
+A few of the decisions that shape how it actually works, day to day:
+
+- **Roles enforced three times over, not once** — a server-side redirect, a UI-level gate, and an independent check inside every API route — because hiding a button from someone isn't the same as actually stopping them.
+- **Nothing is ever deleted, only moved through states** — discount approvals, the prescription pipeline (draft → pending → approved → active → completed), disposal write-offs, bill corrections — every sensitive action is an explicit, traceable state change rather than an edit that quietly erases what came before.
+- **Business rules live in the database, not just the interface** — a minimum-upfront-payment floor on every bill, automatic countdown of remaining therapy-package sessions with low-balance warnings, and print-history logging so a reprinted prescription can never silently drift from the original.
+- **Every clinical document gets a real, human-readable ID** — generated by the database itself for patient records, prescriptions, therapy plans, and bills — and deliberately printable only from inside a patient's own profile, with no "print everything" shortcut that could leak documents.
+- **A two-line fix for a real operational risk** — a small scheduled job pings the system twice a week purely to stop the free-tier database from pausing itself overnight.
+
+<Divider label="06 — shipped" />
+
+<SingleImage
+  src="/work/therapy-station-erp/cover.png"
+  alt="Therapy Station — scheduling calendar"
+  caption="The clinic's actual treatment spaces, not a generic time grid, as the visual backbone of the calendar"
+/>
+
+The system now covers the clinic's entire daily operation in one place: patient registry, slot-based scheduling, session logs, prescriptions and therapy plans, point-of-sale billing with split cash/mobile/card payments and discount approvals, inventory with purchase, usage, and disposal tracking, a staff directory, six analytics reports, and an audit log that holds up under scrutiny. Prescriptions and therapy plans print cleanly as both standard documents and thermal receipts on the clinic's existing printer — because a system that makes the front desk's job harder, even briefly, doesn't get adopted.
+
+<Divider label="07 — outcome" />
+
+The system has only just gone live, so what follows is a grounded estimate, not a measured before-and-after. Before, every visit meant the same patient details — name, phone, services, payment — handwritten across several separate paper trails: a register, a prescription pad, a receipt book, a stock ledger. Each copy was its own chance for a transcription error, a missing record, or a bill nobody could reconstruct weeks later if a question came up.
+
+Now that information is entered once and the system carries it forward — generating the patient ID, the bill number, the running balance, and the stock deduction automatically, with every step logged. At even a modest daily patient volume, that plausibly saves several minutes of redundant writing per visit. But the bigger shift is qualitative: replacing "we think this is what happened" with an exact, untamperable record of every transaction — which matters enormously for a cash-and-mobile-payment business.
+
+<Aside label="stack">
+Next.js · TypeScript · Supabase (Postgres, Auth, Row-Level Security) · Tailwind CSS · shadcn/ui · FullCalendar · Recharts
+</Aside>

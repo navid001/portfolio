@@ -1,125 +1,176 @@
-# Portfolio Website
+# navidalviahsan.me
 
-A modern, responsive portfolio website built with Next.js, showcasing my work as a full-stack developer.
+Personal portfolio of Navid Alvi Ahsan — software engineer at ChefsRHere.
 
-## 🌟 Features
+## Overview
 
-- **Modern Design**: Clean and professional interface with smooth animations
-- **Responsive**: Fully responsive design that works on all devices
-- **Dark Theme**: Eye-friendly dark theme with carefully chosen colors
-- **Sections**:
-  - Interactive Hero section
-  - About Me with key skills
-  - Experience timeline
-  - Project showcase with case studies
-  - Skills & Technologies
-  - Contact form
+An editorial-engineering portfolio built to operate on two layers simultaneously: the content reads as a software engineer's work; the execution (typography, layout, motion) demonstrates design craft without claiming it. Built with Next.js 15 App Router, statically generated, MDX-powered case studies.
 
-## 🛠 Technologies Used
+**Live:** [navidalviahsan.me](https://www.navidalviahsan.me)
 
-- **Framework**: Next.js 15 with App Router
-- **Styling**: Tailwind CSS
-- **Animations**: Framer Motion
-- **UI Components**: Shadcn/ui
-- **Icons**: Lucide React
-- **Form Handling**: React Hook Form
-- **Deployment**: Vercel
+---
 
-## 🚀 Getting Started
+## Tech Stack
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/navid001/portfolio.git
-   ```
+| Layer | Choice |
+|---|---|
+| Framework | Next.js 15 (App Router, static generation) |
+| Language | TypeScript |
+| Styling | Tailwind CSS v3 + inline CSS custom properties |
+| Content | MDX via `next-mdx-remote/rsc` + `gray-matter` |
+| Syntax highlighting | `rehype-pretty-code` + Shiki |
+| Fonts | Playfair Display, DM Sans, JetBrains Mono (Google Fonts via `next/font`) |
+| Animations | Framer Motion (2-3 surgical moments) + View Transitions API |
+| Theme | `next-themes`, dark default, `localStorage` persistence |
+| Contact | Formspree |
+| Deployment | Vercel |
 
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
+---
 
-3. Run the development server:
-   ```bash
-   npm run dev
-   ```
-
-4. Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-## 📁 Project Structure
+## Project Structure
 
 ```
-├── src/
-│   ├── app/
-│   │   ├── error.tsx
-│   │   ├── favicon.ico
-│   │   ├── globals.css
-│   │   ├── layout.tsx
-│   │   ├── loading.tsx
-│   │   ├── not-found.tsx
-│   │   └── page.tsx
-│   ├── components/
-│   │   ├── sections/
-│   │   │   ├── hero.tsx
-│   │   │   ├── about.tsx
-│   │   │   ├── experience.tsx
-│   │   │   ├── projects.tsx
-│   │   │   ├── selectedProject.tsx
-│   │   │   ├── skills.tsx
-│   │   │   ├── services.tsx
-│   │   │   ├── testimonials.tsx
-│   │   │   └── contact.tsx
-│   │   ├── layout/
-│   │   │   ├── footer.tsx
-│   │   │   ├── loading-screen.tsx
-│   │   │   ├── navbar.tsx
-│   │   │   ├── pageLayout.tsx
-│   │   │   ├── theme-provider.tsx
-│   │   └── ui/
-│   ├── hooks/
-│   ├── lib/
-│   ├── types/
-└── public/
-│   ├── projects/
-│   │   ├── floortech/
-│   │   ├── portfolio/
-│   │   ├── webscraper/
+src/
+├── app/
+│   ├── page.tsx              # Homepage
+│   ├── work/
+│   │   ├── page.tsx          # Work index
+│   │   └── [slug]/page.tsx   # Case study pages (statically generated)
+│   ├── about/page.tsx        # About page
+│   ├── notes/page.tsx        # Notes (placeholder)
+│   ├── loading.tsx           # Route-level loading UI
+│   ├── error.tsx             # Route-level error boundary
+│   └── not-found.tsx         # 404 page
+│
+├── content/
+│   └── work/                 # MDX case studies
+│       ├── shipfree.mdx
+│       ├── portfolio.mdx
+│       ├── therapy-station-erp.mdx
+│       └── ...
+│
+├── components/
+│   ├── sections/             # Page section components
+│   │   ├── hero.tsx
+│   │   ├── work-list.tsx
+│   │   ├── about-teaser.tsx
+│   │   └── contact.tsx
+│   ├── work/                 # MDX component library
+│   │   ├── CaseHero.tsx
+│   │   ├── Pullquote.tsx
+│   │   ├── Stat.tsx
+│   │   ├── ImageGrid.tsx
+│   │   ├── CodeBlock.tsx
+│   │   ├── Aside.tsx
+│   │   ├── BeforeAfter.tsx
+│   │   ├── Divider.tsx
+│   │   └── mdx-components.tsx
+│   ├── loaders/              # On-load animation
+│   │   ├── PageLoader.tsx    # Mounts the active loader; toggled via LOADER_ENABLED
+│   │   └── StatusBootLoader.tsx
+│   ├── layout/
+│   │   ├── navbar.tsx
+│   │   ├── footer.tsx
+│   │   └── theme-provider.tsx
+│   └── ui/
+│       ├── HeadshotPlaceholder.tsx
+│       ├── button.tsx
+│       ├── input.tsx
+│       ├── textarea.tsx
+│       ├── toast.tsx
+│       └── toaster.tsx
+│
+├── config/
+│   └── animation.ts          # LOADER_ENABLED — on/off switch for the boot loader
+├── lib/
+│   ├── mdx.ts                # MDX utilities (getAllWork, getWorkBySlug, etc.)
+│   ├── animation-utils.ts
+│   └── utils.ts
+└── types/
+    └── work.ts               # WorkFrontmatter interface
 ```
 
-## 📱 Responsive Design
+---
 
-The portfolio is fully responsive and optimized for:
-- Mobile devices (320px and up)
-- Tablets (768px and up)
-- Desktops (1024px and up)
-- Large screens (1280px and up)
+## Local Development
 
-## ✨ Key Features
+```bash
+npm install
+npm run dev
+```
 
-- Smooth scroll animations
-- Interactive project cards
-- Detailed case studies for each project
-- Skills visualization
-- Contact form with validation
-- Downloadable resume
-- Social media links
+Open [http://localhost:3000](http://localhost:3000).
 
-## 🎨 Customization
+---
 
-1. Modify color scheme in `globals.css`
-2. Add/remove sections in `src/component/layout/pageLayout.tsx`
-3. Update projects in the projects variable inside `components/sections/projects.tsx`
+## Adding a Case Study
 
-## 📈 Future Improvements
+Create a new MDX file at `src/content/work/[slug].mdx` with this frontmatter:
 
-- [ ] Add blog section
-- [ ] Add testimonials section
-- [ ] Implement dark/light theme toggle
-- [ ] Add more refined project case studies
-- [ ] Integrate with a CMS
-- [ ] Add analytics
+```yaml
+---
+slug: "project-slug"
+title: "One-line descriptive title"
+client: "Client name or 'Personal'"
+year: "2025"
+role: "What you did — e.g., Full-stack engineering and design system"
+stack: ["Next.js 15", "Supabase", "Tailwind"]
+duration: "3 months"
+status: "Shipped, in production"
+thumbnail: "/work/[slug]/thumb.jpg"
+cover: "/work/[slug]/cover.jpg"
+ogImage: "/work/[slug]/og.jpg"
+accent: "#E8975A"
+featured: true
+order: 1
+oneLineOutcome: "One sentence describing the measurable result"
+---
+```
 
+Set `featured: true` to show on the homepage (max 6 items, sorted by `order` ascending).
+Set `featured: false` to keep it on the `/work` index only.
 
-## 🤝 Contact
+Create the assets folder at `public/work/[slug]/` and add:
 
-Navid Alvi - [navidalvi.001@gmail.com](mailto:navidalvi.001@gmail.com)
+| File | Dimensions | Max size |
+|---|---|---|
+| `cover.jpg` | 2400×1200px | 200KB |
+| `thumb.jpg` | 800×800px | 50KB |
+| `og.jpg` | 1200×630px | 150KB |
 
-Project Link: [https://github.com/navid001/portfolio](https://github.com/navid001/portfolio)
+The page is automatically included in `generateStaticParams` and the sitemap.
+
+---
+
+## Toggling the Boot Loader
+
+The site ships with one on-load animation, `StatusBootLoader`, mounted via `<PageLoader />`. Turn it on or off in `src/config/animation.ts`:
+
+```typescript
+export const LOADER_ENABLED = true // set to false to disable site-wide
+```
+
+To skip it on a specific page, don't render `<PageLoader />` in that page's JSX.
+
+---
+
+## Adding a Headshot
+
+Place an 800×800px square JPEG at `public/headshot.jpg`. See `TODO_HEADSHOT.md` for specs. The `HeadshotPlaceholder` component detects the file at build time and swaps automatically — no code changes needed.
+
+---
+
+## Design System
+
+See `DESIGN.md` for the full design specification: color tokens, typography, motion rules, component constraints. Referenced by `CLAUDE.md` so future Claude Code sessions load the design context automatically.
+
+**Color tokens (dark theme):**
+- Background: `#0F1419` · Ink: `#F5F2EB` · Quiet: `#8B8680` · Accent: `#E8975A`
+
+**Fonts:** Playfair Display (display) · DM Sans (body) · JetBrains Mono (mono)
+
+---
+
+## License
+
+MIT
