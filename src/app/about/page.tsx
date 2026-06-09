@@ -166,8 +166,8 @@ export default function AboutPage() {
                   marginBottom: "1rem",
                 }}
               >
-                I&apos;m a software engineer at ChefsRHere, a US-based software
-                company, where I build SaaS tools across the full stack. Before that, I spent a couple of years freelancing —
+                I&apos;m a software engineer at ChefsRHere, a US-based company,
+                where I build SaaS tools across the full stack. Before that, I spent a couple of years freelancing —
                 redesigns, brand sites, and custom platforms for small
                 businesses that needed both design thinking and engineering
                 execution.
