@@ -1,11 +1,11 @@
 {
-    "name": "Navid Alvi Ahsan - Full Stack Developer",
+    "name": "Navid Alvi Ahsan — Software Engineer",
     "short_name": "Navid Alvi Ahsan",
-    "description": "Full Stack Developer specializing in React, Next.js, Node.js, and modern web technologies.",
+    "description": "Software engineer building SaaS products end-to-end. Design, frontend, backend, ship.",
     "start_url": "/",
     "display": "standalone",
-    "background_color": "#020817",
-    "theme_color": "#020817",
+    "background_color": "#0F1419",
+    "theme_color": "#0F1419",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",

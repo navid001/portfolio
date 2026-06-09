@@ -116,10 +116,6 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" type="image/png" sizes="180x180" />
         <link rel="manifest" href="/manifest.json" />
-        <meta
-          name="google-site-verification"
-          content="google-site-verification=wwqQ_Jus2QHahOAeyvt2_5XKbnV_UURAYcwpy6M0WeQ"
-        />
       </head>
       <body className="font-body antialiased" suppressHydrationWarning>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem storageKey="portfolio-theme">
