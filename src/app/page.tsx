@@ -16,6 +16,33 @@ export default function HomePage() {
       <Navbar />
       <main>
         <Hero />
+
+        {/* Tech strip — sits between hero and work list */}
+        <section
+          style={{
+            padding: "1.5rem",
+            borderTop: "1px solid var(--hairline)",
+            marginBottom: "3rem",
+          }}
+        >
+          <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+            <p
+              style={{
+                fontFamily: "var(--font-mono), monospace",
+                fontSize: 12,
+                color: "var(--quiet)",
+                lineHeight: 1.8,
+                letterSpacing: "0.03em",
+                margin: 0,
+              }}
+            >
+              Primarily: TypeScript, Next.js, React, Supabase, PostgreSQL, Shopify Admin GraphQL
+              <br />
+              Plus: Node.js, Express, Django, .NET / C#, Azure Functions, MongoDB, Python, Git, Figma, Vercel
+            </p>
+          </div>
+        </section>
+
         <WorkList items={featuredWork} />
         <AboutTeaser />
         <Contact />

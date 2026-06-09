@@ -184,11 +184,31 @@ export function Contact() {
                 textDecoration: "none",
                 letterSpacing: "0.04em",
                 transition: "color 0.15s ease",
+                display: "block",
+                marginBottom: "0.75rem",
               }}
               onMouseEnter={(e) => (e.currentTarget.style.color = "var(--accent)")}
               onMouseLeave={(e) => (e.currentTarget.style.color = "var(--quiet)")}
             >
               navidalvi.001@gmail.com
+            </a>
+            {/* cv.pdf is placed manually in /public/ */}
+            <a
+              href="/cv.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                fontFamily: "var(--font-mono), monospace",
+                fontSize: 13,
+                color: "var(--quiet)",
+                textDecoration: "none",
+                letterSpacing: "0.04em",
+                transition: "color 0.15s ease",
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = "var(--accent)")}
+              onMouseLeave={(e) => (e.currentTarget.style.color = "var(--quiet)")}
+            >
+              Download CV →
             </a>
           </div>
 

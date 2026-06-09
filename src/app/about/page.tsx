@@ -17,24 +17,33 @@ const EXPERIENCE = [
     role: "Software Engineer",
     period: "Mar 2025 — Present",
     location: "Remote (US)",
-    description:
-      "Building SaaS tools across the full stack for a US-based food and grocery delivery company. Shipping label system, order fulfillment automation, Shopify integrations, internal dashboards.",
+    bullets: [
+      "Built ShipFree, a shipping automation dashboard running in daily production, handling label generation and carrier rate selection across the company's fulfilment operation",
+      "Built OrderPack, a Shopify-embedded order management tool that replaced a manual warehouse lookup process with a single-pass consolidated pick list",
+      "Work spans Next.js 15, TypeScript, .NET / C#, Azure Functions, Azure Static Web Apps, and Shopify Admin GraphQL depending on the problem",
+    ],
   },
   {
     company: "Freelance",
-    role: "Full-Stack Developer",
+    role: "Full Stack Developer",
     period: "2023 — 2025",
     location: "Dhaka, Bangladesh",
-    description:
-      "Designed, built, and shipped full-stack web projects end to end for small businesses — redesigns, brand sites, and custom platforms. Tapered off as full-time engineering work took over.",
+    bullets: [
+      "Built Therapy Station ERP, a solo project replacing a paper-based physiotherapy clinic's full operation — scheduling, patient records, billing, and audit trail — with a live Next.js and Supabase system",
+      "Designed, built, and deployed web projects end to end for small businesses: redesigns, brand sites, and custom platforms",
+      "Covered the full stack on every project: design, frontend, backend, and deployment — no handoffs",
+    ],
   },
   {
     company: "NSU Startups Next",
     role: "Technical Support Specialist Intern",
     period: "Jan 2024 — Mar 2024",
     location: "Dhaka, Bangladesh",
-    description:
-      "Improved website performance and user experience, worked across departments to align technical changes with business goals, and documented projects for clean handovers.",
+    bullets: [
+      "Improved website performance and user experience through targeted feature improvements",
+      "Collaborated across departments to align technical changes with business goals",
+      "Provided documentation to ensure smooth handovers and project continuity",
+    ],
   },
 ];
 
@@ -43,7 +52,7 @@ function ExperienceItem({
   role,
   period,
   location,
-  description,
+  bullets,
 }: (typeof EXPERIENCE)[0]) {
   return (
     <div
@@ -73,16 +82,41 @@ function ExperienceItem({
         <div className="mono-meta">{period}</div>
         <div className="mono-meta">{location}</div>
       </div>
-      <p
-        style={{
-          fontFamily: "var(--font-body), sans-serif",
-          fontSize: 15,
-          color: "var(--quiet)",
-          lineHeight: 1.6,
-        }}
-      >
-        {description}
-      </p>
+      <div>
+        {bullets.map((bullet, i) => (
+          <div
+            key={i}
+            style={{
+              display: "flex",
+              gap: "0.5rem",
+              marginBottom: i < bullets.length - 1 ? "0.5rem" : 0,
+            }}
+          >
+            <span
+              style={{
+                fontFamily: "var(--font-body), sans-serif",
+                fontSize: 15,
+                color: "var(--quiet)",
+                flexShrink: 0,
+                lineHeight: 1.6,
+                userSelect: "none",
+              }}
+            >
+              ·
+            </span>
+            <span
+              style={{
+                fontFamily: "var(--font-body), sans-serif",
+                fontSize: 15,
+                color: "var(--ink)",
+                lineHeight: 1.6,
+              }}
+            >
+              {bullet}
+            </span>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
@@ -131,11 +165,12 @@ export default function AboutPage() {
                   marginBottom: "1rem",
                 }}
               >
-                I&apos;m a software engineer at ChefsRHere — a US-based food and
-                grocery delivery company — where I build SaaS tools across the
-                full stack. Before that, I spent a couple of years freelancing
-                — full-stack redesigns and builds for small businesses that
-                needed both design thinking and engineering execution.
+                I&apos;m a software engineer at ChefsRHere, a US food and grocery
+                delivery company, where I build SaaS tools across the full
+                stack. Before that, I spent a couple of years freelancing —
+                redesigns, brand sites, and custom platforms for small
+                businesses that needed both design thinking and engineering
+                execution.
               </p>
 
               <p
@@ -213,8 +248,9 @@ export default function AboutPage() {
                 maxWidth: 600,
               }}
             >
-              TypeScript, Next.js, React, Supabase, Shopify, Azure Functions
-              (C#), Python. Always something new.
+              TypeScript, JavaScript, Next.js, React, Node.js, Express, Django,
+              Supabase, PostgreSQL, MongoDB, Shopify, .NET / C#, Azure
+              Functions, Python. Git and Figma throughout. Always something new.
             </p>
           </section>
 
@@ -274,6 +310,10 @@ export default function AboutPage() {
               </Link>
               <a href="mailto:navidalvi.001@gmail.com" className="about-email-link">
                 navidalvi.001@gmail.com
+              </a>
+              {/* cv.pdf is placed manually in /public/ */}
+              <a href="/cv.pdf" className="about-email-link" target="_blank" rel="noopener noreferrer">
+                Or download my CV →
               </a>
             </div>
           </section>
