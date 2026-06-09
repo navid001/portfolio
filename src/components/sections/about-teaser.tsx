@@ -32,10 +32,10 @@ export function AboutTeaser() {
               marginBottom: "0.75rem",
             }}
           >
-            I&apos;m a software engineer at ChefsRHere — a US-based food and grocery
-            delivery company — where I build SaaS tools across the full stack.
-            Before that, I spent a couple of years freelancing — full-stack
-            redesigns and builds for small businesses.
+            I&apos;m a software engineer at ChefsRHere, a US-based software
+            company, where I build SaaS tools across the full stack.
+            Before that, I spent a couple of years freelancing — redesigns and
+            custom builds for small businesses.
           </p>
 
           <p

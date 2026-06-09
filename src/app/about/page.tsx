@@ -19,7 +19,8 @@ const EXPERIENCE = [
     location: "Remote (US)",
     bullets: [
       "Built ShipFree, a shipping automation dashboard running in daily production, handling label generation and carrier rate selection across the company's fulfilment operation",
-      "Built OrderPack, a Shopify-embedded order management tool that replaced a manual warehouse lookup process with a single-pass consolidated pick list",
+      "Engineered the backend, API layer, and deployment pipeline for OrderPack, a Shopify-embedded order management tool that replaced a manual warehouse lookup process with a consolidated pick list",
+      "Collaborate with the operations team on platform stability, workflow automations, and ongoing technical problem-solving — sustaining and improving running systems alongside shipping new products",
       "Work spans Next.js 15, TypeScript, .NET / C#, Azure Functions, Azure Static Web Apps, and Shopify Admin GraphQL depending on the problem",
     ],
   },
@@ -165,9 +166,8 @@ export default function AboutPage() {
                   marginBottom: "1rem",
                 }}
               >
-                I&apos;m a software engineer at ChefsRHere, a US food and grocery
-                delivery company, where I build SaaS tools across the full
-                stack. Before that, I spent a couple of years freelancing —
+                I&apos;m a software engineer at ChefsRHere, a US-based software
+                company, where I build SaaS tools across the full stack. Before that, I spent a couple of years freelancing —
                 redesigns, brand sites, and custom platforms for small
                 businesses that needed both design thinking and engineering
                 execution.
