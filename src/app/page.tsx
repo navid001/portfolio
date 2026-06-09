@@ -20,7 +20,7 @@ export default function HomePage() {
         {/* Tech strip — sits between hero and work list */}
         <section
           style={{
-            padding: "1.5rem",
+            padding: "0.75rem 1.5rem 1.5rem",
             borderTop: "1px solid var(--hairline)",
             marginBottom: "3rem",
           }}

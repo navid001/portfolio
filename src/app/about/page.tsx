@@ -102,7 +102,7 @@ function ExperienceItem({
                 userSelect: "none",
               }}
             >
-              ·
+              —
             </span>
             <span
               style={{
