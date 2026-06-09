@@ -20,7 +20,7 @@ An editorial-engineering portfolio built to operate on two layers simultaneously
 | Content | MDX via `next-mdx-remote/rsc` + `gray-matter` |
 | Syntax highlighting | `rehype-pretty-code` + Shiki |
 | Fonts | Playfair Display, DM Sans, JetBrains Mono (Google Fonts via `next/font`) |
-| Animations | Framer Motion (2-3 surgical moments) + View Transitions API |
+| Animations | Framer Motion (2–3 surgical moments) + View Transitions API |
 | Theme | `next-themes`, dark default, `localStorage` persistence |
 | Contact | Formspree |
 | Deployment | Vercel |

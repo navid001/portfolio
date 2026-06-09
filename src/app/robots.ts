@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
             allow: "/",
             disallow: "/private/",
         },
-        sitemap: "https:/www.navidalviahsan.me/sitemap.xml",
+        sitemap: "https://navidalviahsan.com/sitemap.xml",
     };
 }

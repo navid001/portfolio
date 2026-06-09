@@ -1,0 +1,54 @@
+---
+slug: "edu-wingman"
+title: "Study assistant and resource platform for students"
+client: "Personal"
+year: "2024"
+role: "Full-stack engineering, product"
+stack: ["Next.js", "TypeScript", "Supabase", "Tailwind CSS"]
+duration: "2 months"
+status: "Shipped"
+thumbnail: "/work/edu-wingman/thumb.jpg"
+cover: "/work/edu-wingman/cover.jpg"
+accent: "#E8975A"
+featured: false
+order: 7
+oneLineOutcome: "Built a study platform used by students at BRAC University"
+---
+
+<CaseHero
+  title="Study assistant and resource platform for students"
+  client="Personal"
+  year="2024"
+  role="Full-stack engineering, product"
+  outcome="Built a study platform used by students at BRAC University"
+/>
+
+<Divider label="01 — context" />
+
+[TODO: Add context — what problem were students facing? Where did the idea come from?]
+
+<Divider label="02 — the constraint" />
+
+[TODO: Add constraint — what technical or product constraints shaped the decisions?]
+
+<Divider label="03 — process" />
+
+[TODO: Add process — what was built, key decisions, what was cut]
+
+<Divider label="04 — shipped" />
+
+[TODO: Add screenshots of the platform. Even if the codebase is private, screenshots of the UI as a user would see it are appropriate here.]
+
+<SingleImage
+  src="/work/edu-wingman/cover.jpg"
+  alt="Edu Wingman platform"
+  caption="[TODO: Replace with actual screenshot]"
+/>
+
+<Divider label="05 — outcome" />
+
+[TODO: Add outcome — how many students used it? What feedback did you get?]
+
+<Aside label="stack">
+Next.js · TypeScript · Supabase · Tailwind CSS
+</Aside>

@@ -56,7 +56,7 @@ The technical choices map directly to the aesthetic ones — each is something a
 
 - MDX-based case studies (`next-mdx-remote/rsc` + `gray-matter`), so each project reads as a narrative with real structure rather than a bullet list in a dialog box.
 - Static generation at build time — no client-side content fetching, no layout shift.
-- Hand-rolled on-load animation variants in pure CSS and React state — no Framer Motion, no GSAP — each under 3KB and swappable through a single config flag (`LOADER_VARIANT`).
+- A boot-sequence on-load animation in pure React state, toggled via a single config flag (`LOADER_ENABLED`) — clean, swappable, and under 3KB.
 - The View Transitions API for inter-page navigation, with a reduced-motion path that fast-dismisses rather than degrading into something worse.
 - `next/font/google` with proper fallback metrics, so custom type loads without a flash of system font or a layout shift.
 
@@ -64,7 +64,7 @@ The technical choices map directly to the aesthetic ones — each is something a
 
 A few things on this site exist specifically as details for an attentive reader to notice:
 
-- The boot-sequence loader on load is one of five interchangeable variants — evidence that the animation approach is a system, not a one-off effect.
+- The boot-sequence loader is wired through a single config toggle — evidence of thinking in systems, not one-off effects.
 - The hero headline's font weight shifts as you scroll — a single quiet motion, the kind of detail that rewards noticing rather than demanding attention.
 - Every case study — including this one — follows the same numbered-block structure: a deliberate, repeatable format that turns "a list of work" into "the same argument, made seven times."
 

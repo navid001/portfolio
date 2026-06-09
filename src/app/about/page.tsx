@@ -312,7 +312,7 @@ export default function AboutPage() {
                 navidalvi.001@gmail.com
               </a>
               {/* cv.pdf is placed manually in /public/ */}
-              <a href="/cv.pdf" className="about-email-link" target="_blank" rel="noopener noreferrer">
+              <a href="/Navid_Alvi_Ahsan.pdf" className="about-email-link" target="_blank" rel="noopener noreferrer">
                 Or download my CV →
               </a>
             </div>

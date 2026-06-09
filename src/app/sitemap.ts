@@ -2,7 +2,7 @@ import { MetadataRoute } from "next";
 import { getAllWorkSlugs } from "@/lib/mdx";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://www.navidalviahsan.me";
+  const baseUrl = "https://navidalviahsan.com";
 
   const staticRoutes = ["/", "/work", "/about", "/notes"].map((route) => ({
     url: `${baseUrl}${route}`,

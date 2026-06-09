@@ -36,7 +36,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.navidalviahsan.me"),
+  metadataBase: new URL("https://navidalviahsan.com"),
   title: {
     default: "Navid Alvi Ahsan — Software Engineer",
     template: "%s | Navid Alvi Ahsan",
@@ -56,19 +56,19 @@ export const metadata: Metadata = {
     "Design Systems",
     "Frontend Engineering",
   ],
-  authors: [{ name: "Navid Alvi Ahsan", url: "https://www.navidalviahsan.me" }],
+  authors: [{ name: "Navid Alvi Ahsan", url: "https://navidalviahsan.com" }],
   creator: "Navid Alvi Ahsan",
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://www.navidalviahsan.me",
+    url: "https://navidalviahsan.com",
     title: "Navid Alvi Ahsan — Software Engineer",
     description:
       "Software engineer building SaaS products end-to-end. Design system, frontend, backend, ship.",
     siteName: "Navid Alvi Ahsan",
     images: [
       {
-        url: "https://www.navidalviahsan.me/og-image.jpg",
+        url: "https://navidalviahsan.com/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "Navid Alvi Ahsan — Software Engineer",
@@ -80,7 +80,7 @@ export const metadata: Metadata = {
     title: "Navid Alvi Ahsan — Software Engineer",
     description:
       "Software engineer building SaaS products end-to-end. Design system, frontend, backend, ship.",
-    images: ["https://www.navidalviahsan.me/og-image.jpg"],
+    images: ["https://navidalviahsan.com/og-image.jpg"],
   },
   robots: {
     index: true,
@@ -97,7 +97,7 @@ export const metadata: Metadata = {
     google: "google-site-verification=wwqQ_Jus2QHahOAeyvt2_5XKbnV_UURAYcwpy6M0WeQ",
   },
   alternates: {
-    canonical: "https://www.navidalviahsan.me",
+    canonical: "https://navidalviahsan.com",
   },
 };
 

@@ -194,7 +194,7 @@ export function Contact() {
             </a>
             {/* cv.pdf is placed manually in /public/ */}
             <a
-              href="/cv.pdf"
+              href="/Navid_Alvi_Ahsan.pdf"
               target="_blank"
               rel="noopener noreferrer"
               style={{
