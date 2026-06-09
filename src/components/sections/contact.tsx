@@ -192,7 +192,6 @@ export function Contact() {
             >
               navidalvi.001@gmail.com
             </a>
-            {/* cv.pdf is placed manually in /public/ */}
             <a
               href="/Navid_Alvi_Ahsan.pdf"
               target="_blank"
